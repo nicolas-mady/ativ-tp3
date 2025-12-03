@@ -1,6 +1,5 @@
-
-from PIL import Image
 import os
+from PIL import Image
 
 # Pasta das imagens
 folder = "images"

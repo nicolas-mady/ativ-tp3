@@ -3,7 +3,7 @@ from PIL import Image
 import os
 
 # Pasta das imagens
-folder = "equipe_5"
+folder = "images"
 # Imagem de referência
 ref_img = os.path.join(folder, "Cópia de IMG_2347.JPG")
 
@@ -18,7 +18,7 @@ with Image.open(ref_img) as ref:
 
 # Redimensiona todas as imagens JPG
 for fname in os.listdir(folder):
-    if fname.lower().endswith(".jpg"):
+    if not fname.startswith("Cópia"):
         path = os.path.join(folder, fname)
         try:
             with Image.open(path) as img:

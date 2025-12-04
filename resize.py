@@ -17,7 +17,7 @@ with Image.open(ref_img) as ref:
 
 # Redimensiona todas as imagens JPG
 for fname in os.listdir(folder):
-    if not fname.startswith("Cópia"):
+    if not fname.startswith("Cópia") and fname.lower().endswith(".jpg"):
         path = os.path.join(folder, fname)
         try:
             with Image.open(path) as img:

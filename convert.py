@@ -1,5 +1,7 @@
 import os
 from PIL import Image
+from pillow_heif import register_heif_opener
+
 
 def convert_to_jpg(image_folder):
     for filename in os.listdir(image_folder):
@@ -8,6 +10,9 @@ def convert_to_jpg(image_folder):
         ext_lower = ext.lower()
         # Ignora arquivos que já são .jpg
         if ext_lower == ".jpg":
+            continue
+        if name + ".jpg" in os.listdir(image_folder):
+            # print(f"Pular {filename}, {name}.jpg já existe.")
             continue
         # Converte apenas arquivos de imagem conhecidos
         if ext_lower in [".jpeg", ".jpg", ".png", ".heic", ".dng", ".bmp", ".tiff", ".tif", ".JPG", ".HEIC", ".DNG"]:
@@ -21,4 +26,5 @@ def convert_to_jpg(image_folder):
                 print(f"Erro ao converter {filename}: {e}")
 
 if __name__ == "__main__":
+    register_heif_opener()
     convert_to_jpg("images")
